@@ -6,14 +6,15 @@
 
 ## Intro
 
-    Heute widmen wir uns der Nummer 1 der OWASP Top10: Broken Access Control. Wir werden uns anschauen, was Broken Access Control bedeutet, wie Angreifer diese Schwachstelle ausnutzen können und welche Maßnahmen Entwickler ergreifen können, um ihre Anwendungen sicherer zu machen.
+Heute widmen wir uns der Nummer 1 der OWASP Top10: Broken Access Control. Wir werden uns anschauen, was Broken Access Control bedeutet, wie Angreifer diese Schwachstelle ausnutzen können und welche Maßnahmen Entwickler ergreifen können, um ihre Anwendungen sicherer zu machen.
 
-    Was ist Broken Access Control? Es handelt sich dabei um eine Schwachstelle, bei der Angreifer unberechtigten Zugriff auf Ressourcen oder Funktionen einer Anwendung erhalten können. Dies kann passieren, wenn die Anwendung nicht richtig überprüft, ob ein Benutzer autorisiert ist, auf bestimmte Daten oder Funktionen zuzugreifen.
+Was ist Broken Access Control? Es handelt sich dabei um eine Schwachstelle, bei der Angreifer unberechtigten Zugriff auf Ressourcen oder Funktionen einer Anwendung erhalten können. Dies kann passieren, wenn die Anwendung nicht richtig überprüft, ob ein Benutzer autorisiert ist, auf bestimmte Daten oder Funktionen zuzugreifen.
 
 ## Arten von Broken Access Control
 
 - [Broken Access Control Examples](https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/)
 - URL Manipulation:
+
 - Exploiting Endpoints:
 - Privilege Escalation:
 - Insecure Direct Object References (IDOR):
@@ -43,8 +44,11 @@
 ### [XZ Utils Backdoor]()
 
 ### [MOVEit Data Breach]()
+
 ### [US Department of State Email Breach]()
+
 ### [Spring Security Broken Access Control]()
+
 ## Massnahmen
 
 - [Massnahmen und Real World Examples](https://www.radware.com/cyberpedia/application-security/broken-access-control-vulnerabilities/)

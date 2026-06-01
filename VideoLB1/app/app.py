@@ -5,7 +5,8 @@ app = Flask(__name__)
 # Ein geheimer Schlüssel ist für Sessions in Flask notwendig
 app.secret_key = 'super-geheimes-session-passwort'
 
-# --- DATENBANK-SETUP (Wird bei jedem App-Start frisch im RAM erstellt) ---
+# --- DATENBANK-SETUP ---
+
 def init_db():
     conn = sqlite3.connect(':memory:', check_same_thread=False)
     cursor = conn.cursor()
@@ -41,7 +42,7 @@ def login_bob():
 
 
 # ==============================================================================
-# TEIL 3: DIE SCHWACHSTELLE (Vulnerable Endpoint)
+# DIE SCHWACHSTELLE (Vulnerable Endpoint)
 # ==============================================================================
 @app.route('/vulnerable/invoice/<int:invoice_id>')
 def get_invoice_vulnerable(invoice_id):
@@ -59,8 +60,9 @@ def get_invoice_vulnerable(invoice_id):
     return "Rechnung nicht gefunden", 404
 
 
+
 # ==============================================================================
-# TEIL 4: DIE MASSNAHME (Secure Endpoint)
+# DIE MASSNAHME (Secure Endpoint)
 # ==============================================================================
 @app.route('/secure/invoice/<int:invoice_id>')
 def get_invoice_secure(invoice_id):
