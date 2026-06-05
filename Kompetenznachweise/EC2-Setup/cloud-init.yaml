@@ -1,0 +1,16 @@
+#cloud-config
+
+users:
+- name: ubuntu
+  groups: docker
+  sudo: ALL=(ALL) NOPASSWD:ALL
+  shell: /bin/bash
+  ssh_authorized_keys:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFllP1X18uUbjtHSfRvuSbONXqjkCMoEdNwtfzkd/uRZ m183-bruhin-tbz
+
+packages:
+- docker.io
+
+runcmd:
+- systemctl start docker
+- systemctl enable docker
