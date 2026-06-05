@@ -1,21 +1,27 @@
 # 183 - KN00 - EC2 Setup
 
+- [B) SSH-Schlüsselpaar lokal generieren](#B)%20SSH-Schl%C3%BCsselpaar%20lokal%20generieren)
+- [C) Sicherheitsgruppe erstellen](#C)%20Sicherheitsgruppe%20erstellen)
+- [D) EC2-Instanz mit Cloud-Init-Script starten](#D)%20EC2-Instanz%20mit%20Cloud-Init-Script%20starten)
+- [E) SSH-Verbindung herstellen und Docker prüfen](#E)%20SSH-Verbindung%20herstellen%20und%20Docker%20pr%C3%BCfen)
+- [Leitfragen / Checkpoints](#Leitfragen%20/%20Checkpoints)
 
-## B) SSH-Schlüsselpaar lokal generieren
+
+## B SSH-Schlüsselpaar lokal generieren
 
 ![SSH Public Key](../../img/M183_EC2-Setup_1.png)
 
 
-## C) Sicherheitsgruppe erstellen
+## C Sicherheitsgruppe erstellen
 
 ![Sicherheitsgruppe](../../img/M183_EC2-Setup_2.png)
-## D) EC2-Instanz mit Cloud-Init-Script starten
+## D EC2-Instanz mit Cloud-Init-Script starten
 
 [cloud-init.yaml](cloud-init.yaml)
 ![Cloud-Init](../../img/M183_EC2_Setup_3.png)
 
 
-## E) SSH-Verbindung herstellen und Docker prüfen
+## E SSH-Verbindung herstellen und Docker prüfen
 
 ![SSH & Docker](../../img/M183_EC2-Setup_4.png)
 
