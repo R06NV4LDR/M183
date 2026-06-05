@@ -12,8 +12,12 @@
 ## D) EC2-Instanz mit Cloud-Init-Script starten
 
 [cloud-init.yaml](cloud-init.yaml)
+![Cloud-Init](../../img/M183_EC2_Setup_3.png)
+
 
 ## E) SSH-Verbindung herstellen und Docker prüfen
+
+![SSH & Docker](../../img/M183_EC2-Setup_4.png)
 
 
 ## Leitfragen / Checkpoints
