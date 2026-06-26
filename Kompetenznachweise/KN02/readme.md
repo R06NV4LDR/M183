@@ -2,8 +2,8 @@
 
 ## A WebGoat starten
 
-![](../../img/M183_KN02_2.png)
-![](../../img/M183_KN02_1.png)
+![WebGoat Landing Page](../../img/M183_KN02_2.png)
+![AWS Security Group](../../img/M183_KN02_1.png)
 
 ## B SQL Injection
 
