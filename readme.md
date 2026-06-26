@@ -5,3 +5,7 @@
 - [OWASP Top10](https://owasp.org/Top10/2025/)
 
 
+- [KN01](./Kompetenznachweise/KN01/readme.md)
+- [KN02](./Kompetenznachweise/KN02/readme.md)
+- [KN03](./Kompetenznachweise/KN03/readme.md)
+- [KN04](./Kompetenznachweise/KN04/readme.md)
