@@ -14,7 +14,7 @@ _Meine Webseite mit angezeigten Session-Daten_
 Aufgabe B: Gehen Sie den Code durch und benennen Sie die fünf Sicherheitslücken mündlich.
 
 1. **Fehlende Passwortüberprüfung (Broken Authentication)**
-    - **Das Problem:** Der Code prüft lediglich `if(isset($_POST['login]))` und übernimmt den Benutzernamen unvalididert in die Session. Das übermittelte Passwort wird vom Skript komplett ingoriert. Jeder kann sich mit jedem Benutzernamen (oder sogar ganz ohne Passwort) einloggen.
+    - **Das Problem:** Der Code prüft lediglich `if(isset($_POST['login]))` und übernimmt den Benutzernamen unvalidiert in die Session. Das übermittelte Passwort wird vom Skript komplett ignoriert. Jeder kann sich mit jedem Benutzernamen (oder sogar ganz ohne Passwort) einloggen.
 
     - **Schutzziel:** Vertraulichkeit
     
@@ -27,7 +27,7 @@ Aufgabe B: Gehen Sie den Code durch und benennen Sie die fünf Sicherheitslücke
 
     - **OWASP:** **A07:2025 - Authentication Failures**
 
-3. **Insecure Direct Object Reference/ Broken Acces Control (Feste Rollenvergabe)**
+3. **Insecure Direct Object Reference/ Broken Access Control (Feste Rollenvergabe)**
      - **Das Problem:** Die Admin-Rolle wird vergeben, sobald der eingegebene Benutzername exakt `admin` lautet (`if($_SESSION['username'] == 'admin')`). Da keine Passwortprüfung stattfindet, kann sich jeder Nutzer trivial administrative Rechte zuweisen.
 
     - **Schutzziel:** Vertraulichkeit, Integrität
@@ -59,7 +59,7 @@ Aufgabe C: Demonstrieren Sie den Session-Fixation-Angriff in zwei Browsern live 
 
 - Was ist passiert? Konnte der zweite Browser auf die Session des ersten zugreifen?
     
-    _Die Session-ID wurde manuell aus dem ersten Browser ausgelesen und in den zweiten Browser übertragen. Nach der erfolgreichen Anmeldung im ersten Browser wurde diese spezifische Session-ID serverseitig als authentifiziert markiert. Beim anschliessenden Neuladen des zweiten Browsers wurde dieselbe, nun authentifizierte Session-ID an den Server übermittelt_
+    _Die Session-ID wurde manuell aus dem ersten Browser ausgelesen und in den zweiten Browser übertragen. Nach der erfolgreichen Anmeldung im ersten Browser wurde diese spezifische Session-ID serverseitig als authentifiziert markiert. Beim anschliessenden Neuladen des zweiten Browsers wurde dieselbe, nun authentifizierte Session-ID an den Server übermittelt._
 
 - Warum ist das ein Sicherheitsproblem?
 
@@ -73,8 +73,12 @@ Aufgabe C: Demonstrieren Sie den Session-Fixation-Angriff in zwei Browsern live 
 
 ## D Sicherheitslücken beheben
 
-- Video der DevTools mit gesetzten Cookie-Flags (HttpOnly und Secure sichtbar) für vorher (ohne Fix) und nachher (mit Fix).
-- Video der erfolgreichen Anmeldung nach Fix 2 (falsches Passwort muss abgelehnt werden).
+![Cookies vor dem Fix](../../img/M183_KN03_4.gif)
+_Cookies vor dem Fix_
+
+![Cookies nach dem Fix](../../img/M183_KN03_5.gif)
+_Cookies nach dem Fix: Das Passwort wurde beim ersten Versuch bewusst falsch eingegeben_
+ 
 - Schriftliche Antworten auf die drei Fragen:
 
     - Was bewirkt `HttpOnly` auf einem Cookie? Gegen welchen Angriff schützt dieses Flag?
@@ -157,7 +161,7 @@ Aufgabe C: Demonstrieren Sie den Session-Fixation-Angriff in zwei Browsern live 
 
     1. _**Wissen:** Ein Passwort oder eine PIN_
     2. _**Besitz:** Ein physischer Gegenstand wie ein USB-Token oder ein Smartphone_
-    3. _**Biometrie:** Ein biometrischer Merkmal wie eine Fingerabdruck oder Gesichtserkennung_
+    3. _**Biometrie:** Ein biometrisches Merkmal wie ein Fingerabdruck oder Gesichtserkennung_
     4. _**Ort:** Der physische Standort des Benutzers, z.B. durch GPS-Ortung_
 
 - Ich kann erklären, warum «Passwort + PIN» kein echtes MFA ist.
