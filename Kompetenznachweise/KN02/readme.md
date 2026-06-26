@@ -103,7 +103,7 @@ Abgabe C:
 
 - Screenshot der gelösten WebGoat-Aufgabe C2 (grüne Bestätigung).
 
-- Schriftliche Antworten auf die fünf Fragen.
+- Schriftliche Antworten auf die fünf Fragen:
 
     - Was ist der zentrale Unterschied zwischen Reflected XSS und Stored XSS hinsichtlich Persistenz und Reichweite?
 
@@ -123,6 +123,33 @@ Abgabe C:
 
 ## D Cross-Site Request Forgery (CSRF)
 
-## E Broken Access Control (IDOR)
+- Den Inhalt der csrf-attack.html-Datei (Screenshot oder Code-Block).
+- Screenshot der analysierten Netzwerk-Anfrage aus DevTools (URL, Methode und Parameter sichtbar).
+- Screenshot, der zeigt, dass der Angriff erfolgreich war (grüne WebGoat-Bestätigung).
+- Schriftliche Antworten auf die vier Fragen:
+    1. Warum schickt der Browser den Session-Cookie mit, wenn die Anfrage von csrf-attack.html (einer lokalen Datei) kommt – obwohl das Opfer diese Seite nie bewusst besucht hat?
+    2. Was ist ein CSRF-Token und warum kann eine Angreifer-Seite ihn nicht einfach aus dem Formular lesen?
+    3. Was bewirkt das SameSite=Strict-Flag bei einem Cookie und wie schützt es vor CSRF?
+    4. Welche OWASP Top 10 Kategorie (2025) beschreibt CSRF am ehesten? Nennen Sie Nummer und Bezeichnung.
+
+## E Broken Access Control - (IDOR)
+- Screenshot des gelesenen fremden Profils mit sichtbarer Profil-ID in der URL oder im Response.
+- Screenshot oder Command der erfolgreichen Veränderung (WebGoat-Bestätigung sichtbar).
+- Schriftliche Antworten auf die vier Fragen:
+
+    1. Warum reicht es nicht, eine Ressource einfach «nicht zu verlinken», um sie zu schützen? (Stichwort: Security through Obscurity)
+    2. Wie hätte die Applikation den IDOR-Angriff verhindern können? Beschreiben Sie die notwendige serverseitige Prüfung.
+    3. Was ist der Unterschied zwischen horizontaler und vertikaler Privilegienerweiterung? Welche Form zeigt dieses IDOR-Beispiel?
+    4. Welche OWASP Top 10 Kategorie (2025) beschreibt Broken Access Control? Nennen Sie Nummer und Bezeichnung und erklären Sie, warum sie auf Platz 1 steht.
 
 ## F Broken Authentication (JWT)
+
+- Screenshot von jwt.io mit dem analysierten Original-Token (Payload sichtbar, Algorithmus sichtbar).
+- Den vollständigen manipulierten Token (als Text oder Screenshot).
+- Screenshot der grünen Bestätigung in WebGoat nach dem erfolgreichen Angriff.
+- Schriftliche Antworten auf die vier Fragen:
+
+    1. Warum ist es ein Sicherheitsproblem, wenn ein Server "alg":"none" akzeptiert?
+    2. JWT-Payloads sind nur Base64url-kodiert, nicht verschlüsselt. Was bedeutet das für den Umgang mit sensiblen Daten im Token?
+    3. Welche Massnahmen schützen gegen JWT-Angriffe? Nennen Sie mindestens drei (z.B. Algorithmus-Whitelist, kurze Ablaufzeiten, serverseitige Signaturprüfung).
+    4. Welche OWASP Top 10 Kategorie (2021) beschreibt Broken Authentication? Nennen Sie Nummer und Bezeichnung.
