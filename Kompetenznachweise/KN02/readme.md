@@ -91,18 +91,6 @@ Angepasster Payload
 QTY1=1&QTY2=1&QTY3=1&QTY4=1&field1=%3Cscript%3Ealert(%27Reflected%20XSS%27)%3C%2Fscript%3E&field2=111
 
 
-Antworten Sie schriftlich:
-
-- Was ist der zentrale Unterschied zwischen Reflected XSS und Stored XSS hinsichtlich Persistenz und Reichweite?
-
-    __
-- Was unterscheidet DOM-based XSS von Reflected XSS – warum ist DOM-based XSS für serverseitige Filter schwieriger zu erkennen?
-
-    __
-- Was bedeutet Output Encoding und warum schützt es gegen XSS? Geben Sie ein konkretes Beispiel, wie `<script>` nach dem Encoding aussieht.
-- Was ist der HTTP-Header Content-Security-Policy (CSP) und wie schränkt er XSS ein? (Recherchieren Sie falls nötig.)
-- Welche OWASP Top 10 Kategorie (2021) beschreibt XSS? Nennen Sie Nummer und Bezeichnung.
-
 Abgabe C:
 
 - Screenshot des ausgelösten Alerts bei C1a (Reflected) mit dem Payload sichtbar im Eingabefeld oder Response.
@@ -114,9 +102,24 @@ Abgabe C:
 - Screenshot des ausgelösten Alerts bei C2 (Stored) nach dem Speichern des Kommentars.
 
 - Screenshot der gelösten WebGoat-Aufgabe C2 (grüne Bestätigung).
-Schriftliche Antworten auf die fünf Fragen.
 
+- Schriftliche Antworten auf die fünf Fragen.
 
+    - Was ist der zentrale Unterschied zwischen Reflected XSS und Stored XSS hinsichtlich Persistenz und Reichweite?
+
+        __
+    - Was unterscheidet DOM-based XSS von Reflected XSS – warum ist DOM-based XSS für serverseitige Filter schwieriger zu erkennen?
+
+        __
+    - Was bedeutet Output Encoding und warum schützt es gegen XSS? Geben Sie ein konkretes Beispiel, wie `<script>` nach dem Encoding aussieht.
+
+        __
+    - Was ist der HTTP-Header Content-Security-Policy (CSP) und wie schränkt er XSS ein? (Recherchieren Sie falls nötig.)
+
+        __
+    - Welche OWASP Top 10 Kategorie (2021) beschreibt XSS? Nennen Sie Nummer und Bezeichnung.
+
+        __
 
 ## D Cross-Site Request Forgery (CSRF)
 
