@@ -2,8 +2,8 @@
 
 ## Kompetenznachweise
 
-- [EC2 Setup](TBZ\Module\183 - Applikationssicherheit implementieren\Kompetenznachweise\EC2-Setup\readme.md)
-- [KN01 - XSS, CSRF, Client-State Manipulation](TBZ\Module\183 - Applikationssicherheit implementieren\Kompetenznachweise\KN01 - XSS, CSRF, Client-State Manipulation\readme.md)
-- [KN02 - SQL Injection, XSS, CSRF, IDOR, JWT](TBZ\Module\183 - Applikationssicherheit implementieren\Kompetenznachweise\KN02\readme.md)
-- [KN03 -  Session Handling](TBZ\Module\183 - Applikationssicherheit implementieren\Kompetenznachweise\KN03 -  Session Handling\readme.md)
-- [KN04](TBZ\Module\183 - Applikationssicherheit implementieren\Kompetenznachweise\KN04\readme.md)
+- [EC2 Setup](EC2-Setup/readme.md)
+- [KN01 - XSS, CSRF, Client-State Manipulation](KN01%20-%20XSS,%20CSRF,%20Client-State%20Manipulation/readme.md)
+- [KN02 - SQL Injection, XSS, CSRF, IDOR, JWT](KN02/readme.md)
+- [KN03 -  Session Handling](KN03%20-%20Session%20Handling/readme.md)
+- [KN04](KN04/readme.md)
