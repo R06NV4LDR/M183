@@ -95,31 +95,72 @@ Abgabe C:
 
 - Screenshot des ausgelösten Alerts bei C1a (Reflected) mit dem Payload sichtbar im Eingabefeld oder Response.
 
-![C1a Screenshot](../../img/M183_KN02_6.png)
+    ![C1a Screenshot](../../img/M183_KN02_6.png)
 
 - Screenshot der C1b-Analyse: welche Codezeile(n) Sie als verwundbar markiert haben.
 
+    ![](../../img/M183_KN02_8.gif)
+    ![C1b Analyse](../../img/M183_KN02_7_arrow.png)
+
 - Screenshot des ausgelösten Alerts bei C2 (Stored) nach dem Speichern des Kommentars.
+    ![](../../img/M183_KN02_9.gif)
+    ![](../../img/M183_KN02_10small.gif)
 
 - Screenshot der gelösten WebGoat-Aufgabe C2 (grüne Bestätigung).
+
+    ![](../../img/M183_KN02_10.gif)
+    ![](../../img/M183_KN02_11.png)
 
 - Schriftliche Antworten auf die fünf Fragen:
 
     1. Was ist der zentrale Unterschied zwischen Reflected XSS und Stored XSS hinsichtlich Persistenz und Reichweite?
 
-        __
+        **Persistenz:** 
+        - _**Reflected XSS** ist flüchtig. Der Payload befindet sich im Link/Request und wird vom Server sofort einmalig zurückgespiegelt._
+
+        - _**Stored XSS** ist dauerhaft (persistent). Der Payload wird direkt in der Datenbank des Servers gespeichert._
+
+        **Reichweite:**
+
+        - _**Reflected XSS** trifft **nur gezielte Opfer**, die aktiv auf einen manipulierten Link klicken._
+
+        - _**Stored XSS** trifft **alle Benutzer**, die die betroffene Seite aufrufen._
+
     2. Was unterscheidet DOM-based XSS von Reflected XSS – warum ist DOM-based XSS für serverseitige Filter schwieriger zu erkennen?
 
-        __
+        **Unterschied:**
+
+        _Reflected XSS wird vom Server in das HTML eingebaut. DOM-based XSS geschieht im Client-Browser, weil ein dortiges JavaScript-Skript Daten unsicher verarbeitet._
+
+        **Warum schwerer zu erkennen:**
+
+        _Bei DOM-based XSS wird der Payload (z.B. nach einem `#` in der URL) oft gar nicht an den Server übermittelt. Da der Server die Schadsoftware im HTTP-Request nie zu Gesicht bekommt, laufen serverseitige Filter komplett ins Leere._
+
     3. Was bedeutet Output Encoding und warum schützt es gegen XSS? Geben Sie ein konkretes Beispiel, wie `<script>` nach dem Encoding aussieht.
 
-        __
-    4. Was ist der HTTP-Header Content-Security-Policy (CSP) und wie schränkt er XSS ein? (Recherchieren Sie falls nötig.)
+        **Bedeutung & Schutz:**
 
-        __
+        _Es wandelt potenziell gefährliche Steuerzeichen (wie `<` oder `>`) in sichere HTML-Entitäten um. Der Browser interpretiert die Eingabe dadurch nicht mehr als ausführbaren Code, sondern als reinen Text._
+
+        **Beispiel:**
+
+        ```plaintext
+        &lt;script&gt;
+        ```
+        
+    4. Was ist der HTTP-Header `Content-Security-Policy` (CSP) und wie schränkt er XSS ein? (Recherchieren Sie falls nötig.)
+
+        **Definition:** 
+        
+        _Ein HTTP-Response-Header, mit dem der Server dem Browser eine Whitelist vertrauenswürdiger Datenquellen und Skripte vorgibt._
+        
+        **XSS-Einschränkungen:**
+
+        _Selbst weinn ein Angreifer erfolgreich HTML-Code injiziert, blockiert die CSP die Ausführung, indem sie beispielsweise das Ausführen von Inline-Skripten (`<script>...</script>`) oder das Nachladen von Code von fremden Domänen strikt verbietet._
+
     5. Welche OWASP Top 10 Kategorie (2021) beschreibt XSS? Nennen Sie Nummer und Bezeichnung.
 
-        __
+        _A03:2021-Injection_
 
 ## D Cross-Site Request Forgery (CSRF)
 
