@@ -26,10 +26,12 @@
         **Skalierung auf 1 Million Einträge:** _Wenn das Skript für 13 Versuche 0.02 Sekunden benötigt, schafft es 650 Anfragen pro Sekunde. Für 1 Million Einträge würde es also ca. 1538 Sekunden oder 25.6 Minuten dauern._
         
         **Anfragen pro Sekunde**
+
         $$R_s = \frac{\text{Versuche}}{\text{Zeit}} = \frac{13}{0.02\,\text{s}} = 650\,\text{Anfragen/s}$$
         
     
         **Hochrechnung für 1 Million Einträge**
+        
         $$T_{\text{Gesamt}} = \frac{\text{Gesamte Einträge}}{R_s} = \frac{1'000'000}{650\,\text{Anfragen/s}} \approx 1538.46\,\text{Sekunden} \approx 25.6\,\text{Minuten}$$
 
     2. Welche **zwei technischen Massnahmen** hätten diesen Angriff verhindert oder massgeblich erschwert? (Hinweis: schauen Sie sich den Kommentar im PHP-Code an)

@@ -1,17 +1,19 @@
 # 183 - KN02 - SQL Injection, XSS, CSRF, IDOR, JWT
 
-- [A WebGoat starten](#A%20WebGoat%20starten)
-- [B SQL Injection](#B%20SQL%20Injection)
-- [C Cross-Site Scripting (XSS)](#C%20Cross-Site%20Scripting%20(XSS))
-- [D Cross-Site Request Forgery (CSRF)](#D%20Cross-Site%20Request%20Forgery%20(CSRF))
-- [E Broken Access Control - (IDOR)](#E%20Broken%20Access%20Control%20-%20(IDOR))
-- [F Broken Authentication (JWT)](#F%20Broken%20Authentication%20(JWT))
+- [A WebGoat starten](#a-webgoat-starten)
+- [B SQL Injection](#b-sql-injection)
+- [C Cross-Site Scripting (XSS)](#c-cross-site-scripting-xss)
+- [D Cross-Site Request Forgery (CSRF)](#d-cross-site-request-forgery-csrf)
+- [E Broken Access Control - (IDOR)](#e-broken-access-control---idor)
+- [F Broken Authentication (JWT)](#f-broken-authentication-jwt)
 
 
 ## A WebGoat starten
 
 ![WebGoat Landing Page](../../img/M183_KN02_2.png)
+_WebGoat Startseite mit erkennbarer EC2-IP_
 ![AWS Security Group](../../img/M183_KN02_1.png)
+_Screenshot der Inbound-Rules_
 
 ## B SQL Injection
 

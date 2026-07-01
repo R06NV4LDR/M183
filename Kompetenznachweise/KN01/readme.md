@@ -1,11 +1,11 @@
 # 183 - KN01 - XSS, CSRF, Client-State Manipulation
 
-- [A Gruyere starten und Accounts erstellen](#A%20Gruyere%20starten%20und%20Accounts%20erstellen)
-- [B Stored XSS in Gruyere](#B%20Stored%20XSS%20in%20Gruyere)
-	- [B1 - DOM-Manipulation als Proof of Concept](#B1%20-%20DOM-Manipulation%20als%20Proof%20of%20Concept)
-	- [B2 – Cookies: Was sie sind und warum sie gefährlich sind](#B2%20%E2%80%93%20Cookies:%20Was%20sie%20sind%20und%20warum%20sie%20gef%C3%A4hrlich%20sind)
-	- [B3 – Session-Hijacking: Cookie-Exfiltration zum Angreifer-Server](#B3%20%E2%80%93%20Session-Hijacking:%20Cookie-Exfiltration%20zum%20Angreifer-Server)
-- [C Reflected XSS in Gruyere](#C%20Reflected%20XSS%20in%20Gruyere)
+- [A Gruyere starten und Accounts erstellen](#a-gruyere-starten-und-accounts-erstellen)
+- [B Stored XSS in Gruyere](#b-stored-xss-in-gruyere)
+	- [B1 - DOM-Manipulation als Proof of Concept](#b1---dom-manipulation-als-proof-of-concept)
+	- [B2 – Cookies: Was sie sind und warum sie gefährlich sind](#b2--cookies-was-sie-sind-und-warum-sie-gefährlich-sind)
+	- [B3 – Session-Hijacking: Cookie-Exfiltration zum Angreifer-Server](#b3--session-hijacking-cookie-exfiltration-zum-angreifer-server)
+- [C Reflected XSS in Gruyere](#c-reflected-xss-in-gruyere)
 
 
 M183_KN01_3

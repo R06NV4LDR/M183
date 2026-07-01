@@ -1,11 +1,11 @@
 # 183 - KN03 - Session Handling
 
-- [A Sicherheitsgruppe erweitern und App deployen](#A%20Sicherheitsgruppe%20erweitern%20und%20App%20deployen)
-- [B Sicherheitslücken in der App analysieren](#B%20Sicherheitsl%C3%BCcken%20in%20der%20App%20analysieren)
-- [C Session-Fixation demonstrieren](#C%20Session-Fixation%20demonstrieren)
-- [D Sicherheitslücken beheben](#D%20Sicherheitsl%C3%BCcken%20beheben)
-- [E MFA-Faktoren erklären](#E%20MFA-Faktoren%20erkl%C3%A4ren)
-- [Leitfragen / Checkpoints](#Leitfragen%20/%20Checkpoints)
+- [A Sicherheitsgruppe erweitern und App deployen](#a-sicherheitsgruppe-erweitern-und-app-deployen)
+- [B Sicherheitslücken in der App analysieren](#b-sicherheitslücken-in-der-app-analysieren)
+- [C Session-Fixation demonstrieren](#c-session-fixation-demonstrieren)
+- [D Sicherheitslücken beheben](#d-sicherheitslücken-beheben)
+- [E MFA-Faktoren erklären](#e-mfa-faktoren-erklären)
+- [Leitfragen / Checkpoints](#leitfragen--checkpoints)
 
 
 ## A Sicherheitsgruppe erweitern und App deployen
