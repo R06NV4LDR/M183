@@ -296,10 +296,54 @@ Abgabe C:
 ## F Broken Authentication (JWT)
 
 - Screenshot von jwt.io mit dem analysierten Original-Token (Payload sichtbar, Algorithmus sichtbar).
+
+    ![JWT Analyse](../../img/M183_KN02_18.png)
+    ![JWT Analyse](../../img/M183_KN02_19.gif)
+
 - Den vollständigen manipulierten Token (als Text oder Screenshot).
+    ```jwt
+    eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpYXQiOjE3ODM3ODE3MTcsImFkbWluIjoidHJ1ZSIsInVzZXIiOiJUb20ifQ.
+    ```
+
+    ```json
+    {
+        "header": {
+            "alg": "none",
+            "typ": "JWT"
+        },
+        "payload": {
+            "iat": 1783781717,
+            "admin": "true",
+            "user": "Tom"
+        }
+    }
+    ```
+
+
 - Screenshot der grünen Bestätigung in WebGoat nach dem erfolgreichen Angriff.
+
+    ![JWT Bestätigung](../../img/M183_KN02_20.gif)
+
 - Schriftliche Antworten auf die vier Fragen:
+  
   1. Warum ist es ein Sicherheitsproblem, wenn ein Server `"alg":"none"` akzeptiert?
+
+        _Wenn ein Server den Algorithmus `"none"` akzeptiert, verzichtet er bei der Validierung des Tokens aktiv auf die Überprüfung der kryptografischen Signatur. Die Signatur dient als digitaler Siegelring: Fehlt die Prüfung, verliert das Token seine **Integritätssicherung**. Ein Angreifer kann beliebige Werte im Payload (wie Benutzerrollen oder IDs) manipulieren und den Signaturteil einfach weglassen. Der Server vertraut den manipulierten Daten dann blind._
+  
   2. JWT-Payloads sind nur Base64url-kodiert, nicht verschlüsselt. Was bedeutet das für den Umgang mit sensiblen Daten im Token?
+  
+        _Base64url ist ein reines Kodierungsverfahren (vergleichbar mit einer anderen Schriftart), das Daten lediglich in ein transportsicheres Textformat bringt – es bietet keinerlei Vertraulichkeit oder Verschlüsselung. Da jeder Client, Proxy oder Angreifer den Payload mit Standard-Tools (oder Webseiten wie `jwt.io`) sofort im Klartext auslesen kann, gilt die strikte Regel: **Es dürfen niemals sensible Daten** (wie Passwörter, Sozialversicherungsnummern, persönliche Daten oder interne Systemgeheimnisse) unverschlüsselt in einem JWT hinterlegt werden._
+  
   3. Welche Massnahmen schützen gegen JWT-Angriffe? Nennen Sie mindestens drei (z.B. Algorithmus-Whitelist, kurze Ablaufzeiten, serverseitige Signaturprüfung).
+  
+        - **Algorithmus-Whitelist:** _Der Server muss im Code fest definieren, welche Signaturalgorithmen erlaubt sind (z. B. ausschließlich `HS256` oder `RS256`). Unerwartete Algorithmen oder der Wert `none` müssen sofort blockiert werden._
+
+        - **Erzwungene Signaturprüfung:** _Die Validierung der Signatur muss zwingend als allererster Schritt im Backend erfolgen, noch bevor Daten aus dem Payload ausgelesen oder verarbeitet werden._
+
+        - **Kurze Ablaufzeiten (`exp`-Claim):** _Token sollten eine minimale Lebensdauer (z. B. 15 Minuten) besitzen. Dadurch wird das Zeitfenster für den Missbrauch drastisch verkürzt, falls ein Token abgefangen oder per Brute-Force angegriffen wird._
+
+        - **Starke Geheimnisse (Kryptografische Entropie):** _Bei symmetrischen Verfahren (HMAC) muss der Schlüssel lang und zufällig genug sein, um Offline-Wörterbuchangriffe (z. B. mit Hashcat) unmöglich zu machen._
+    
   4. Welche OWASP Top 10 Kategorie (2021) beschreibt Broken Authentication? Nennen Sie Nummer und Bezeichnung.
+
+        _A07:2021- Identification and Authentication Failures_
