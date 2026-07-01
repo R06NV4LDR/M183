@@ -299,7 +299,7 @@ Abgabe C:
 
   4.  Welche OWASP Top 10 Kategorie (2025) beschreibt Broken Access Control? Nennen Sie Nummer und Bezeichnung und erklären Sie, warum sie auf Platz 1 steht.
 
-        _A01:2025 - Broken Access Control_
+        _**[A01:2025 - Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)**_
 
         _Sie führt die Liste an, weil Fehler in der Zugriffskontrolle statistisch die **häufigste und kritischste Schwachstelle** in modernen Webanwendungen sind (bei über 94 % der von OWASP getesteten Anwendungen wurden entsprechende Schwachstellen gefunden). Da immer mehr Anwendungen auf dezentrale APIs und Microservices setzen, steigt die Komplexität, die Zugriffsrechte an jedem einzelnen Endpunkt konsistent und fehlerfrei zu validieren._
 
