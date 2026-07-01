@@ -44,10 +44,32 @@
 ## B AES-256 symmetrische Verschlüsselung
 
 - Screenshot der vollständigen Ausgabe des Skripts (Klartext, Schlüssel, Ciphertext und Manipulations-Test sichtbar).
+
+    ![](../../img/M183_KN04_4.png)
+
 - Schriftliche Antworten auf die drei Fragen:
     1. Was ist ein Nonce und warum muss er für jede Verschlüsselung neu generiert werden?
+
+        **Bedeutung:** _Ein Nonce (Number used once) ist eine eindeutige zufällige  oder fortlaufende Zahl, die bei einem Verschlüsselungsverfahren zusammen mit em geheimen Schlüssel verwendet wird._
+
+        **Warum neu generieren?** _Wenn derselbe Schlüssel und derselbe Nonce für zwei unterschiedliche Nachrichten verwendet werden, führt dies bei vielen Krypto-Modi (wie AES-GCM) dazu, dass identische Klartext-Muster zu identischen Ciphertext-Mustern führen. Ein Angreifer könnte dadurch Nachrichten vergleichen, Muster erkennen oder sogar Teile des Klartexts mathematisch rekonstruieren (Replay-Angriffe und Key-Stream-Reconstruction). Der Nonce sorgt dafür, dass derselbe Klartext jedes Mal völlig anders verschlüsselt aussieht._
+
+
     2. Was ist der Unterschied zwischen DES (56-Bit-Schlüssel) und AES-256 (256-Bit-Schlüssel) in Bezug auf Brute-Force-Resistenz?
+
+        **DES (56-Bit-Schlüssel):** _ Besitzt einen winzigen Schlüsselraum von nur $2^{56}$ (ca. $7.2 \times 10^{16}$) Möglichkeiten. Moderne Computer oder spezialisierte Hardware (ASICs) können diesen gesamten Schlüsselraum in wenigen Stunden vollständig durchsuchen. DES gilt daher seit Jahren als absolut unsicher._
+
+        **AES-256 (256-Bit-Schlüssel):** _ Besitzt einen gigantischen Schlüsselraum von $2^{256}$ (ca. $1.1 \times 10^{77}$) Möglichkeiten. Um diese Zahl zu veranschaulichen: Selbst wenn man alle Supercomputer der Erde zusammenschalten würde, bräuchten sie astronomisch viel länger als das Alter des Universums, um den Schlüssel per Brute-Force zu erraten. AES-256 ist nach heutigem Stand der Wissenschaft absolut resistent gegen Brute-Force-Angriffe._
+
     3. Was demonstriert der Manipulations-Test am Ende des Skripts? Welchen Vorteil bietet GCM gegenüber einfachem AES-CBC?
+
+        ![](../../img/M183_KN04_5.png)
+
+        **Demonstration des Tests:** _Der Test zeigt, dass der **GCM-Modus** (Galois/Counter Mode) eine Veränderung von auch nur einem einzigen Bit im Ciphertext sofort bemerkt. Er bricht die Entschlüsselung mit einer Fehlermeldung ab, anstatt korrupte Daten auszugeben._
+
+        **Vorteil gegenüber AES-CBC:** _**AES-CBC** bietet nur Vertraulichkeit. Ein Angreifer kann den Ciphertext manipulieren (Bit-Flipping-Angriff). Der Empfänger entschlüsselt die manipulierten Daten zwar zu Fehlern oder veränderten Werten, merkt aber nicht zwingend, dass die Nachricht von einem Angreifer manipuliert wurde._
+
+        - AES-GCM bietet Vertraulichkeit und Integrität (Authenticated Encryption). Es berechnet während der Verschlüsselung ein kryptographisches Siegel (Authentication Tag). Wird der Ciphertext manipuliert, passt das Siegel nicht mehr und die Manipulation fliegt sofort auf.
 
 ---
 
@@ -55,24 +77,44 @@
 
 - Screenshot der Ausgabe von `openssl x509 -text -noout` (Subject, Issuer und Validity sichtbar).
 - Screenshot von `openssl verify` mit dem Ergebnis `OK`.
+
+    ![](../../img/M183_KN04_6.png)
 - Schriftliche Antworten auf die drei Fragen:
+
     1. Was ist der Unterschied zwischen einem selbstsignierten Zertifikat und einem CA-signierten Zertifikat?
+
+        __
+
     2. Was enthält ein CSR (Certificate Signing Request) und wozu dient er?
+
+        __
+
     3. Warum vertraut ein normaler Browser Ihrem selbst erstellten Zertifikat nicht, obwohl es technisch korrekt erstellt wurde?
 
 ---
 ## D Nginx mit TLS konfigurieren
 
-
-Abgabe:
+![](../../img/M183_KN04_9.png)
 
 - Screenshot von `https://<IHRE-EC2-IP>` im Browser mit sichtbarer Sicherheitswarnung (oder der geöffneten Seite nach «Weiter»).
+
+    ![](../../img/M183_KN04_7.png)
 - Screenshot des Zertifikat-Dialogs im Browser (CN, Aussteller und Gültigkeit sichtbar).
+
+    ![](../../img/M183_KN04_8.png)
+
 - Schriftliche Antworten auf die drei Fragen:
     1. Welche Informationen zeigt der Browser im Zertifikat-Dialog? Was davon haben Sie selbst in Aufgabe C definiert?
+
+        __
+
     2. Warum erscheint trotz technisch korrektem Zertifikat eine Sicherheitswarnung?
+
+        __
+
     3. Erklären Sie anhand dieses Setups, wie hybride Verschlüsselung bei HTTPS funktioniert (Schlüsselaustausch vs. Datenverschlüsselung).
 
+        __
 
 ---
 
