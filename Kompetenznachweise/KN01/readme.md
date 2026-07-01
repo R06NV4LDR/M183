@@ -70,37 +70,32 @@ Abgabe B3:
     ![](../../img/M183_KN01_7.png)
 - Schriftliche Antworten auf die fünf Fragen:
 
-Warum konnte der Angreifer den Cookie des Verteidigers erhalten, ohne je dessen Passwort zu kennen oder Zugriff auf dessen Browser zu haben?
-Welche Rolle spielt der new Image().src-Trick – warum funktioniert diese Technik trotz Same-Origin-Policy?
-Warum war der Serveo-Tunnel notwendig – was wäre passiert, wenn der Payload direkt http://<EC2-IP>:9000 verwendet hätte?
-Nennen Sie mindestens zwei technische Massnahmen, mit denen die Webapplikation diesen Angriff verhindert hätte.
-Was bewirkt das Secure-Flag bei einem Cookie, und in welcher Situation schützt es?
+    1. Warum konnte der Angreifer den Cookie des Verteidigers erhalten, ohne je dessen Passwort zu kennen oder Zugriff auf dessen Browser zu haben?
+    2. Welche Rolle spielt der new Image().src-Trick – warum funktioniert diese Technik trotz Same-Origin-Policy?
+    3. Warum war der Serveo-Tunnel notwendig – was wäre passiert, wenn der Payload direkt http://<EC2-IP>:9000 verwendet hätte?
+    4. Nennen Sie mindestens zwei technische Massnahmen, mit denen die Webapplikation diesen Angriff verhindert hätte.
+    5. Was bewirkt das Secure-Flag bei einem Cookie, und in welcher Situation schützt es?
 
 ## C Reflected XSS in Gruyere
 
 https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login?uid=defender_ronny&pw=%2BA7S22O%27s0%7Ex
-Antworten Sie schriftlich:
 
-Was ist der Hauptunterschied zwischen Stored XSS und Reflected XSS hinsichtlich Persistenz und Reichweite? (Antwort aus Schritt 3 ableiten)
-Wie würde ein Angreifer in der Praxis vorgehen, um das Opfer dazu zu bringen, den manipulierten Link zu öffnen? (Social Engineering)
-Welcher OWASP Proactive Control schützt am direktesten gegen XSS? Nennen Sie ihn mit Nummer und Titel. (Referenz: owasp.org/www-project-proactive-controls)
-
-Abgabe:
-
-Screenshot von DevTools → Network → Response mit dem Payload im HTML-Quelltext.
-Screenshot des ausgeführten Alerts mit dem Payload sichtbar in der URL.
-Schriftliche Antworten auf die drei Fragen.
+- Screenshot von DevTools → Network → Response mit dem Payload im HTML-Quelltext.
+- Screenshot des ausgeführten Alerts mit dem Payload sichtbar in der URL.
+- Schriftliche Antworten auf die drei Fragen:
+    1. Was ist der Hauptunterschied zwischen Stored XSS und Reflected XSS hinsichtlich Persistenz und Reichweite? (Antwort aus Schritt 3 ableiten)
+    2. Wie würde ein Angreifer in der Praxis vorgehen, um das Opfer dazu zu bringen, den manipulierten Link zu öffnen? (Social Engineering)
+    3. Welcher OWASP Proactive Control schützt am direktesten gegen XSS? Nennen Sie ihn mit Nummer und Titel. (Referenz: owasp.org/www-project-proactive-controls)
 
 
-# D CLient-State Manipulation in Gruyere
-Antworten Sie schriftlich:
 
-Warum ist es gefährlich, sicherheitsrelevante Daten (wie Rollen oder Berechtigungen) im Client (Cookie/LocalStorage) zu speichern?
-Wo sollten Berechtigungsprüfungen stattfinden – im Client oder auf dem Server? Begründen Sie.
-Welche OWASP Top 10 Kategorie (2025) beschreibt dieses Problem?
+# D Client-State Manipulation in Gruyere
 
-Abgabe:
 
-Screenshot der DevTools mit sichtbarem Cookie-Inhalt (vor der Manipulation).
-Screenshot der Applikation nach erfolgreicher Manipulation (erhöhte Rechte sichtbar).
-Schriftliche Antworten auf die drei Fragen.
+
+- Screenshot der DevTools mit sichtbarem Cookie-Inhalt (vor der Manipulation).
+- Screenshot der Applikation nach erfolgreicher Manipulation (erhöhte Rechte sichtbar).
+- Schriftliche Antworten auf die drei Fragen:
+    1. Warum ist es gefährlich, sicherheitsrelevante Daten (wie Rollen oder Berechtigungen) im Client (Cookie/LocalStorage) zu speichern?
+    2. Wo sollten Berechtigungsprüfungen stattfinden – im Client oder auf dem Server? Begründen Sie.
+    3. Welche OWASP Top 10 Kategorie (2025) beschreibt dieses Problem?

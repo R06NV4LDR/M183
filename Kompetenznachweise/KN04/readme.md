@@ -34,6 +34,14 @@
 ## D Nginx mit TLS konfigurieren
 
 
+Abgabe:
+
+- Screenshot von `https://<IHRE-EC2-IP>` im Browser mit sichtbarer Sicherheitswarnung (oder der geöffneten Seite nach «Weiter»).
+- Screenshot des Zertifikat-Dialogs im Browser (CN, Aussteller und Gültigkeit sichtbar).
+- Schriftliche Antworten auf die drei Fragen:
+    1. Welche Informationen zeigt der Browser im Zertifikat-Dialog? Was davon haben Sie selbst in Aufgabe C definiert?
+    2. Warum erscheint trotz technisch korrektem Zertifikat eine Sicherheitswarnung?
+    3. Erklären Sie anhand dieses Setups, wie hybride Verschlüsselung bei HTTPS funktioniert (Schlüsselaustausch vs. Datenverschlüsselung).
 
 
 ---
