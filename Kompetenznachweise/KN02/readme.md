@@ -165,16 +165,61 @@ Abgabe C:
 ## D Cross-Site Request Forgery (CSRF)
 
 - Den Inhalt der csrf-attack.html-Datei (Screenshot oder Code-Block).
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Gewinnspiel</title>
+    </head>
+    <body>
+        <h1>Glückwunsch! Sie haben gewonnen!</h1>
+        <p>Klicken Sie auf den Button, um Ihren Preis einzulösen:</p>
+        
+        <form id="csrfForm" action="http://32.192.216.86:8080/WebGoat/csrf/basic-get-flag" method="POST">
+            <input type="submit" value="HIER PREIS ABHOLEN" style="padding: 10px 20px; font-size: 16px; background-color: green; color: white; border: none; cursor: pointer;">
+        </form>
+    </body>
+    </html>
+    ```
 - Screenshot der analysierten Netzwerk-Anfrage aus DevTools (URL, Methode und Parameter sichtbar).
+
+    ![POST Anfrage](../../img/M183_KN02_13.png)
 - Screenshot, der zeigt, dass der Angriff erfolgreich war (grüne WebGoat-Bestätigung).
+
+    ![CSRF Bestätigung](../../img/M183_KN02_12.png)
 - Schriftliche Antworten auf die vier Fragen:
-    1. Warum schickt der Browser den Session-Cookie mit, wenn die Anfrage von csrf-attack.html (einer lokalen Datei) kommt – obwohl das Opfer diese Seite nie bewusst besucht hat?
+    1. Warum schickt der Browser den Session-Cookie mit, wenn die Anfrage von `csrf-attack.html` (einer lokalen Datei) kommt – obwohl das Opfer diese Seite nie bewusst besucht hat?
+
+        _Der Browser unterscheidet standardmäßig nicht, wer oder welche Website eine Anfrage auslöst, sondern nur, an wen sie gerichtet ist. Da die Ziel-URL in der `csrf-attack.html` auf die IP-Adresse der WebGoat-Instanz verweist, greift der automatische Cookie-Mechanismus des Browsers: Er packt alle für diese Domäne/IP gültigen Session-Cookies ungefragt in den HTTP-Header, solange der Benutzer dort im selben Browser noch parallel eingeloggt ist._
+
     2. Was ist ein CSRF-Token und warum kann eine Angreifer-Seite ihn nicht einfach aus dem Formular lesen?
-    3. Was bewirkt das SameSite=Strict-Flag bei einem Cookie und wie schützt es vor CSRF?
+
+        **Was es ist:** 
+
+        _Ein CSRF-Token ist ein kryptografisch sicherer, zufälliger und einmaliger Wert, den der Server generiert und fest an die aktuelle Session des Nutzers bindet. Dieses Token muss bei jeder sensitiven Anfrage (z. B. POST) zwingend mitgeschickt werden._
+
+        **Wie es funktioniert:**
+
+        _Aufgrund der **Same-Origin-Policy (SOP)** des Browsers ist es einer fremden Website (oder einer lokalen HTML-Datei) strengstens untersagt, die Inhalte oder das DOM einer anderen Domäne (WebGoat) auszulesen. Der Angreifer kann das Formular zwar blind abschicken, das geheime Token darin aber weder sehen noch im Vorfeld stehlen._
+
+    3. Was bewirkt das `SameSite=Strict`-Flag bei einem Cookie und wie schützt es vor CSRF?
+
+        **Wirkung:**
+
+        _Das Flag `SameSite=Strict` weist den Browser an, das Cookie **ausschliesslich dann** mitzusenden wwernn die Anfrage von derselben Domäne (Origin) stammt, die auch in der Adressleiste des Browsers steht._
+
+        **CSRF-Schutz:**
+
+        _Sobald ein Link oder ein Formular von einer externen Seite (oder einer lokalen Datei wie `csrf-attack.html`) aufgerufen wird, blockiert der Browser das Mitsenden des Session-Cookies komplett. Da der Server die Anfrage ohne das Cookie als "nicht eingeloggt" einstuft, läuft der CSRF-Angriff ins Leere._
+
     4. Welche OWASP Top 10 Kategorie (2025) beschreibt CSRF am ehesten? Nennen Sie Nummer und Bezeichnung.
+
+        _A01:2025 - Broken Access Control_
 
 ## E Broken Access Control - (IDOR)
 - Screenshot des gelesenen fremden Profils mit sichtbarer Profil-ID in der URL oder im Response.
+![](../../img/M183_KN02_14.png)
+![](../../img/M183_KN02_15.gif)
 - Screenshot oder Command der erfolgreichen Veränderung (WebGoat-Bestätigung sichtbar).
 - Schriftliche Antworten auf die vier Fragen:
 
