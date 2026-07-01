@@ -120,4 +120,27 @@
 
 ## E HTTP vs HTTPS - Traffic live mitlesen
 
+- Screenshot der vollständigen nmap-Ausgabe.
+    ![](../../img/M183_KN04_10.png)
+- Screenshot von Terminal 1 mit dem tcpdump-Output (Benutzername und Passwort müssen im Klartext sichtbar sein).
+
+    ![](../../img/M183_KN04_11.png)
+- Screenshot von Terminal 2 mit dem curl-Befehl.
+    ![](../../img/M183_KN04_10.gif)
+
+
+- Screenshot von Terminal 1 mit dem tcpdump-Output auf Port 443 (verschlüsselte Bytes sichtbar, kein Klartext).
+
+
+
+    1. Was zeigt nmap über Port 80 und Port 443? Welche Information erhält ein Angreifer bereits durch einen Port-Scan, bevor er auch nur eine einzige Anfrage an die App gestellt hat?
+
+        __
+
+    2. Was genau ist im tcpdump-Output sichtbar? Markieren Sie die Zeile, die das Passwort im Klartext enthält.
+    3. Was müsste ein Angreifer in einem realen Netzwerk tun, um diesen Traffic mitzulesen? (Stichwort: ARP-Spoofing / Man-in-the-Middle)
+    4. Was ist der Unterschied zwischen dem tcpdump-Output auf Port 80 und Port 443? Was sieht ein Angreifer beim HTTPS-Traffic?
+    5. Was passiert beim TLS-Handshake, bevor die eigentlichen Daten (Benutzername/Passwort) übertragen werden? (Stichwort: Hybride Verschlüsselung aus Aufgabe D)
+    6. Sie sehen bei Port 443 noch immer die IP-Adressen von Client und Server im tcpdump-Output. Warum ist das so, obwohl die Verbindung verschlüsselt ist?
+
 ## F Hash-Funktionen: MD5 cracken mit Python
