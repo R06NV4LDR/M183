@@ -71,10 +71,24 @@ Abgabe B3:
 - Schriftliche Antworten auf die fünf Fragen:
 
     1. Warum konnte der Angreifer den Cookie des Verteidigers erhalten, ohne je dessen Passwort zu kennen oder Zugriff auf dessen Browser zu haben?
+
+    __
+
     2. Welche Rolle spielt der new Image().src-Trick – warum funktioniert diese Technik trotz Same-Origin-Policy?
-    3. Warum war der Serveo-Tunnel notwendig – was wäre passiert, wenn der Payload direkt http://<EC2-IP>:9000 verwendet hätte?
+
+    __
+
+    3. Warum war der Serveo-Tunnel notwendig – was wäre passiert, wenn der Payload direkt http://<EC2-IP>:9000 verwendet hätte?    
+
+    __
+
     4. Nennen Sie mindestens zwei technische Massnahmen, mit denen die Webapplikation diesen Angriff verhindert hätte.
+
+    __
+
     5. Was bewirkt das Secure-Flag bei einem Cookie, und in welcher Situation schützt es?
+
+    __
 
 ## C Reflected XSS in Gruyere
 
