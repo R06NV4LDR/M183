@@ -47,7 +47,7 @@ Aufgabe B: Gehen Sie den Code durch und benennen Sie die fünf Sicherheitslücke
 
     - **Schutzziel:** Vertraulichkeit
 
-    - [**OWASP:** **A06:2025 - Security Misconfiguration**](https://owasp.org/Top10/2025/A06_2025-Security_Misconfiguration/)
+    - [**OWASP:** **A06:2025 - Security Misconfiguration**](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)
 
 
 5. **Fehlender Schutz vor Cross-Site Request Forgery (CSRF)**
