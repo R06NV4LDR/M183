@@ -26,35 +26,36 @@ Aufgabe B: Gehen Sie den Code durch und benennen Sie die fünf Sicherheitslücke
 
     - **Schutzziel:** Vertraulichkeit
     
-    - **OWASP:** **A07:2025 - Authentication Failures**    
+    - [**OWASP:** **A07:2025 - Authentication Failures**](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)    
 
 2. **Session Fixation (Fehlende Erneuerung der Session-ID)**
       - **Das Problem:** Nach dem Login wird die Funktion `session_regenerate_id()` nicht aufgerufen. Die Session-ID bleibt vor und nach dem Login identisch. Ein Angreifer kann dem Opfer eine bekannte Session-ID unterschieben und nach dem Login des Opfers diese Session übernehmen.
 
     - **Schutzziel:** Vertraulichkeit, Integrität
 
-    - **OWASP:** **A07:2025 - Authentication Failures**
+    - [**OWASP:** **A07:2025 - Authentication Failures**](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
 
 3. **Insecure Direct Object Reference/ Broken Access Control (Feste Rollenvergabe)**
      - **Das Problem:** Die Admin-Rolle wird vergeben, sobald der eingegebene Benutzername exakt `admin` lautet (`if($_SESSION['username'] == 'admin')`). Da keine Passwortprüfung stattfindet, kann sich jeder Nutzer trivial administrative Rechte zuweisen.
 
     - **Schutzziel:** Vertraulichkeit, Integrität
 
-    - **OWASP:** **A01:2025 - Broken Access Control**
+    - [**OWASP:** **A01:2025 - Broken Access Control**](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
 
 4. **Unsichere Cookie-Konfiguration (Security Misconfiguration)**
      - **Das Problem:** Es werden keine sicheren Cookie-Parameter gesetzt (z.B. fehlen, `HttpOnly`, `Secure`, `SameSite`). Dadurch können Session-Cookies durch Cross-Site Scripting (XSS) per JavaScript gestohlen oder über unverschlüsselte Verbindungen abgefangen werden.
 
     - **Schutzziel:** Vertraulichkeit
 
-    - **OWASP:** **A02:2025 - Security Misconfiguration**
+    - [**OWASP:** **A06:2025 - Security Misconfiguration**](https://owasp.org/Top10/2025/A06_2025-Security_Misconfiguration/)
+
 
 5. **Fehlender Schutz vor Cross-Site Request Forgery (CSRF)**
      - **Das Problem:** Weder beim Login, noch beim Speichern der Nachricht, noch beim Logout wird ein Anti-CSRF-Token verwendet. Ein Angreifer könnte einen authentifizierten Nutzer dazu bringen, unbemerkt Aktionen auszuführen.
 
     - **Schutzziel:** Integrität
 
-    - **OWASP:** **A01:2025 - Broken Access Control**
+    - [**OWASP:** **A01:2025 - Broken Access Control**](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
 
 
 ---
