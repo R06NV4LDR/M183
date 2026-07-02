@@ -119,7 +119,13 @@ Abgabe B3:
 https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login?uid=defender_ronny&pw=%2BA7S22O%27s0%7Ex
 
 - Screenshot von DevTools → Network → Response mit dem Payload im HTML-Quelltext.
+
+    ![](../../img/M183_KN01_8.png)
+
 - Screenshot des ausgeführten Alerts mit dem Payload sichtbar in der URL.
+    
+    ![](../../img/M183_KN01_9.png)
+
 - Schriftliche Antworten auf die drei Fragen:
     1. Was ist der Hauptunterschied zwischen Stored XSS und Reflected XSS hinsichtlich Persistenz und Reichweite? (Antwort aus Schritt 3 ableiten)
     2. Wie würde ein Angreifer in der Praxis vorgehen, um das Opfer dazu zu bringen, den manipulierten Link zu öffnen? (Social Engineering)
@@ -133,7 +139,13 @@ https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login
 
 
 - Screenshot der DevTools mit sichtbarem Cookie-Inhalt (vor der Manipulation).
+
+    ![]()
+
 - Screenshot der Applikation nach erfolgreicher Manipulation (erhöhte Rechte sichtbar).
+    
+    ![]()
+
 - Schriftliche Antworten auf die drei Fragen:
     1. Warum ist es gefährlich, sicherheitsrelevante Daten (wie Rollen oder Berechtigungen) im Client (Cookie/LocalStorage) zu speichern?
     2. Wo sollten Berechtigungsprüfungen stattfinden – im Client oder auf dem Server? Begründen Sie.
