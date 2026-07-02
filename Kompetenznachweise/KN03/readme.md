@@ -7,6 +7,8 @@
 - [E MFA-Faktoren erklären](#e-mfa-faktoren-erklären)
 - [Leitfragen / Checkpoints](#leitfragen--checkpoints)
 
+---
+---
 
 ## A Sicherheitsgruppe erweitern und App deployen
 
@@ -15,6 +17,7 @@ _Angepasste Security Group für KN03_
 ![Meine Webseite](../../img/M183_KN03_2.png)
 _Meine Webseite mit angezeigten Session-Daten_
 
+---
 ---
 
 ## B Sicherheitslücken in der App analysieren
@@ -59,6 +62,7 @@ Aufgabe B: Gehen Sie den Code durch und benennen Sie die fünf Sicherheitslücke
 
 
 ---
+---
 
 ## C Session-Fixation demonstrieren
 
@@ -78,6 +82,7 @@ Aufgabe C: Demonstrieren Sie den Session-Fixation-Angriff in zwei Browsern live 
 
     _Die Implementierung der Funktion session_regenerate_id(true) unmittelbar nach der erfolgreichen Validierung der Anmeldedaten. Diese Massnahme bewirkt, dass die bisherige (und potenziell bereits bekannte) Session-ID serverseitig gelöscht und durch eine neu generierte ID ersetzt wird. Ein Angreifer verliert dadurch den Zugriff, da seine zuvor fixierte Session-ID ihre Gültigkeit verliert._
 
+---
 ---
 
 ## D Sicherheitslücken beheben
@@ -113,6 +118,7 @@ _Cookies nach dem Fix: Das Passwort wurde beim ersten Versuch bewusst falsch ein
         - _Er verzögert den Hashing-Prozess künstlich (Key Stretching/Work Factor), wodurch Offline-Angriffe und das massenhafte Durchprobieren von Passwörtern extrem zeitaufwändig, ressourcenintensiv und damit unpraktikabel werden._
 
 ---
+---
 
 ## E MFA-Faktoren erklären
 
@@ -136,6 +142,7 @@ _Cookies nach dem Fix: Das Passwort wurde beim ersten Versuch bewusst falsch ein
     _Das Konzept von temporären Zugangsdaten ähnelt am ehesten dem Prinzip eines **zeitbasierten Einmalpassworts (TOTP)**, wie es oft bei Authenticator-Apps in der Kategorie Besitz eingesetzt wird.
     Der Kerngedanke dahinter ist die strenge zeitliche Befristung. Bei AWS STS sind die Zugangsdaten (Access Key, Secret Key, Session Token) nur für einen kurzen, vordefinierten Zeitraum gültig (z. B. 15 Minuten). Dies setzt das Prinzip der minimalen Rechte (Least Privilege) auf einer zeitlichen Ebene um. Selbst wenn diese temporären Daten gestohlen werden, ist das Zeitfenster für einen Missbrauch durch einen Angreifer stark minimiert, ähnlich wie bei einem MFA-Token, das nach 30 Sekunden verfällt._
 
+---
 ---
 
 ## Leitfragen / Checkpoints

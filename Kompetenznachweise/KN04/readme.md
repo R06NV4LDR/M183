@@ -7,6 +7,8 @@
 - [E HTTP vs HTTPS - Traffic live mitlesen](#e-http-vs-https---traffic-live-mitlesen)
 - [F Hash-Funktionen: MD5 cracken mit Python](#f-hash-funktionen-md5-cracken-mit-python)
 
+---
+---
 
 ## A Brute-Force-Angriff auf ein Web-Login
 
@@ -31,7 +33,7 @@
         
     
         **Hochrechnung für 1 Million Einträge**
-        
+
         $$T_{\text{Gesamt}} = \frac{\text{Gesamte Einträge}}{R_s} = \frac{1'000'000}{650\,\text{Anfragen/s}} \approx 1538.46\,\text{Sekunden} \approx 25.6\,\text{Minuten}$$
 
     2. Welche **zwei technischen Massnahmen** hätten diesen Angriff verhindert oder massgeblich erschwert? (Hinweis: schauen Sie sich den Kommentar im PHP-Code an)
@@ -49,6 +51,7 @@
         - **Geringe mathematische Entropie:** Da es sich um ein logisches, existierendes Wort und keine zufällige Zeichenfolge handelt, ist der mathematische Zufallsgehalt (die Entropie) des Passworts extrem niedrig. Es gehört weltweit zu den am häufigsten verwendeten Passwörtern und wird von Cracker-Tools in Sekundenbruchteilen erraten.
 
 
+---
 ---
 
 ## B AES-256 symmetrische Verschlüsselung
@@ -79,8 +82,9 @@
 
         **Vorteil gegenüber AES-CBC:** _**AES-CBC** bietet nur Vertraulichkeit. Ein Angreifer kann den Ciphertext manipulieren (Bit-Flipping-Angriff). Der Empfänger entschlüsselt die manipulierten Daten zwar zu Fehlern oder veränderten Werten, merkt aber nicht zwingend, dass die Nachricht von einem Angreifer manipuliert wurde._
 
-        - AES-GCM bietet Vertraulichkeit und Integrität (Authenticated Encryption). Es berechnet während der Verschlüsselung ein kryptographisches Siegel (Authentication Tag). Wird der Ciphertext manipuliert, passt das Siegel nicht mehr und die Manipulation fliegt sofort auf.
+        - **AES-GCM** bietet Vertraulichkeit und Integrität (Authenticated Encryption). Es berechnet während der Verschlüsselung ein kryptographisches Siegel (Authentication Tag). Wird der Ciphertext manipuliert, passt das Siegel nicht mehr und die Manipulation fliegt sofort auf.
 
+---
 ---
 
 ## C PKI-Zertifikatskette mit OpenSSL
@@ -101,7 +105,11 @@
 
     3. Warum vertraut ein normaler Browser Ihrem selbst erstellten Zertifikat nicht, obwohl es technisch korrekt erstellt wurde?
 
+        __
+
 ---
+---
+
 ## D Nginx mit TLS konfigurieren
 
 ![](../../img/M183_KN04_9.png)
@@ -127,6 +135,7 @@
         __
 
 ---
+---
 
 ## E HTTP vs HTTPS - Traffic live mitlesen
 
@@ -141,16 +150,45 @@
 
 - Screenshot von Terminal 1 mit dem tcpdump-Output auf Port 443 (verschlüsselte Bytes sichtbar, kein Klartext).
 
-
+    ![](../../img/M183_KN04_14.png)
+- Schriftliche Antworten auf die sechs Fragen:
 
     1. Was zeigt nmap über Port 80 und Port 443? Welche Information erhält ein Angreifer bereits durch einen Port-Scan, bevor er auch nur eine einzige Anfrage an die App gestellt hat?
 
         __
 
     2. Was genau ist im tcpdump-Output sichtbar? Markieren Sie die Zeile, die das Passwort im Klartext enthält.
+
+        __
+
     3. Was müsste ein Angreifer in einem realen Netzwerk tun, um diesen Traffic mitzulesen? (Stichwort: ARP-Spoofing / Man-in-the-Middle)
+
+        __
+
     4. Was ist der Unterschied zwischen dem tcpdump-Output auf Port 80 und Port 443? Was sieht ein Angreifer beim HTTPS-Traffic?
+
+        __
     5. Was passiert beim TLS-Handshake, bevor die eigentlichen Daten (Benutzername/Passwort) übertragen werden? (Stichwort: Hybride Verschlüsselung aus Aufgabe D)
+
+        __
+
     6. Sie sehen bei Port 443 noch immer die IP-Adressen von Client und Server im tcpdump-Output. Warum ist das so, obwohl die Verbindung verschlüsselt ist?
 
+        __
+
+---
+---
+
 ## F Hash-Funktionen: MD5 cracken mit Python
+
+- Screenshot der crack_md5.py-Ausgabe (geknackte Passwörter mit Benutzernamen und Hashes sichtbar).
+
+    ![](../../img/M183_KN04_12.png)
+- Screenshot der Python-Ausgabe aus Schritt 6 (MD5 vs. scrypt Hashes/Sekunde und Hochrechnung).
+
+    ![](../../img/M183_KN04_13.png)
+
+- Schriftliche Antworten auf die drei Fragen aus Schritt 4:
+    1. Welche Passwörter wurden geknackt, welche nicht? Was unterscheidet die knackbaren Passwörter von franks Passwort?
+    2. Das Script hat nur 20 Wörter geprüft. Die bekannte rockyou.txt-Wortliste hat 14 Millionen Einträge. Schätzen Sie anhand der gemessenen Hashes/Sekunde: Wie lange würde der gleiche Angriff mit rockyou.txt dauern?
+    3. Franks Passwort ist lang und steht in keiner Wortliste – trotzdem ist der MD5-Hash grundsätzlich knackbar, es fehlt nur die richtige Liste. Welche zwei Massnahmen aus KN04 machen gestohlene Hashes unbrauchbar, selbst wenn der Angreifer sie hat?

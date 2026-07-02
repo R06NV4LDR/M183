@@ -7,15 +7,23 @@
 	- [B3 – Session-Hijacking: Cookie-Exfiltration zum Angreifer-Server](#b3--session-hijacking-cookie-exfiltration-zum-angreifer-server)
 - [C Reflected XSS in Gruyere](#c-reflected-xss-in-gruyere)
 
+---
+---
 
 M183_KN01_3
 Serveo: https://a42379c259cb7d7e-54-165-155-69.serveousercontent.com
 
 Gruyere: https://google-gruyere.appspot.com/530823917152430333453354905065921721830/
 
+---
+---
+
 ## A Gruyere starten und Accounts erstellen
 
 ![Gruyere Accounts](../../img/M183_KN01_1.png)
+
+---
+---
 
 ## B Stored XSS in Gruyere
 
@@ -65,7 +73,6 @@ Gruyere: https://google-gruyere.appspot.com/530823917152430333453354905065921721
 
 ---
 
-
 ### B3 – Session-Hijacking: Cookie-Exfiltration zum Angreifer-Server
 
 Abgabe B3:
@@ -98,6 +105,9 @@ Abgabe B3:
 
     __
 
+---
+---
+
 ## C Reflected XSS in Gruyere
 
 https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login?uid=defender_ronny&pw=%2BA7S22O%27s0%7Ex
@@ -109,7 +119,8 @@ https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login
     2. Wie würde ein Angreifer in der Praxis vorgehen, um das Opfer dazu zu bringen, den manipulierten Link zu öffnen? (Social Engineering)
     3. Welcher OWASP Proactive Control schützt am direktesten gegen XSS? Nennen Sie ihn mit Nummer und Titel. (Referenz: owasp.org/www-project-proactive-controls)
 
-
+---
+---
 
 ## D Client-State Manipulation in Gruyere
 
@@ -121,3 +132,6 @@ https://google-gruyere.appspot.com/530823917152430333453354905065921721830/login
     1. Warum ist es gefährlich, sicherheitsrelevante Daten (wie Rollen oder Berechtigungen) im Client (Cookie/LocalStorage) zu speichern?
     2. Wo sollten Berechtigungsprüfungen stattfinden – im Client oder auf dem Server? Begründen Sie.
     3. Welche OWASP Top 10 Kategorie (2025) beschreibt dieses Problem?
+
+---
+---

@@ -7,13 +7,19 @@
 - [E Broken Access Control - (IDOR)](#e-broken-access-control---idor)
 - [F Broken Authentication (JWT)](#f-broken-authentication-jwt)
 
+---
+---
 
 ## A WebGoat starten
 
 ![WebGoat Landing Page](../../img/M183_KN02_2.png)
 _WebGoat Startseite mit erkennbarer EC2-IP_
+
 ![AWS Security Group](../../img/M183_KN02_1.png)
 _Screenshot der Inbound-Rules_
+
+---
+---
 
 ## B SQL Injection
 
@@ -46,7 +52,6 @@ _Screenshot der Inbound-Rules_
 
    - Weil `1=1` für jede einzelne Zeile in der Tabelle zutrifft, ignoriert die Datenbank die Identitätsprüfung und gibt `alle Datensätze` an die Applikation zurück. Die Applikation sieht ein erfolgreiches Datenbank-Ergebnis und gewährt fälschlicherweise Zugriff.
 
----
 
 2. Wie funktionieren Prepared Statements (parameterisierte Abfragen) technisch? Warum kann SQL Injection damit nicht mehr funktionieren?
 
@@ -86,6 +91,7 @@ _Screenshot der Inbound-Rules_
 
       - **Wo liegt die Gefahr?** Viele Unternehmen nutzen LDAP für das Single-Sign-On (Mitarbeiter-Login). Wird die Eingabe nicht bereinigt, kann ein Angreifer die LDAP-Suchfilter manipulieren (analog zu SQLi). Die Gefahr liegt im Umgehen der Login-Maske oder dem unbefugten Auslesen von Mitarbeiter- und Strukturdaten aus dem Firmennetzwerk.
 
+---
 ---
 
 ## C Cross-Site Scripting (XSS)
@@ -165,6 +171,9 @@ Abgabe C:
 
      _**[A03:2021-Injection](https://owasp.org/Top10/2021/A03_2021-Injection/)**_
 
+---
+---
+
 ## D Cross-Site Request Forgery (CSRF)
 
 - Den Inhalt der csrf-attack.html-Datei (Screenshot oder Code-Block).
@@ -228,6 +237,9 @@ Abgabe C:
   4. Welche OWASP Top 10 Kategorie (2025) beschreibt CSRF am ehesten? Nennen Sie Nummer und Bezeichnung.
 
      _**[A01:2025 - Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)**_
+
+---
+---
 
 ## E Broken Access Control - (IDOR)
 
@@ -302,6 +314,9 @@ Abgabe C:
         _**[A01:2025 - Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)**_
 
         _Sie führt die Liste an, weil Fehler in der Zugriffskontrolle statistisch die **häufigste und kritischste Schwachstelle** in modernen Webanwendungen sind (bei über 94 % der von OWASP getesteten Anwendungen wurden entsprechende Schwachstellen gefunden). Da immer mehr Anwendungen auf dezentrale APIs und Microservices setzen, steigt die Komplexität, die Zugriffsrechte an jedem einzelnen Endpunkt konsistent und fehlerfrei zu validieren._
+
+---
+---
 
 ## F Broken Authentication (JWT)
 
