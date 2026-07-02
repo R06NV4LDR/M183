@@ -97,15 +97,15 @@
 
     1. Was ist der Unterschied zwischen einem selbstsignierten Zertifikat und einem CA-signierten Zertifikat?
 
-        __
+        **Selbstsigniert vs. CA-signiert:** _Ein selbstsigniertes Zertifikat wird vom Besitzer selbst ausgestellt (kein Vertrauensanker). Ein CA-signiertes Zertifikat wird von einer vertrauenswürdigen Instanz (Certificate Authority) signiert, die die Identität des Antragsstellers prüft._
 
     2. Was enthält ein CSR (Certificate Signing Request) und wozu dient er?
 
-        __
+        **CSR:** _Der Certificate Signing Request enthält den Public Key des Servers und Identitätsinformationen (z.B. Domainname). Er dient dazu, bei der CA offiziell ein Zertifikat zu beantragen, ohne den privaten Schlüssel übertragen zu müssen._
 
     3. Warum vertraut ein normaler Browser Ihrem selbst erstellten Zertifikat nicht, obwohl es technisch korrekt erstellt wurde?
 
-        __
+        **Browser-Warnung:** _Der Browser hat eine Liste von vertrauenswürdigen Root-Zertifikaten ("Trust Store"). Da dein selbst erstelltes Root-CA-Zertifikat dort nicht eingetragen ist, stuft der Browser es als nicht vertrauenswürdig ein._
 
 ---
 ---
@@ -124,15 +124,15 @@
 - Schriftliche Antworten auf die drei Fragen:
     1. Welche Informationen zeigt der Browser im Zertifikat-Dialog? Was davon haben Sie selbst in Aufgabe C definiert?
 
-        __
+        **Zertifikats-Dialog:** _Er zeigt den Common Name (CN/Domain), den Aussteller (Issuer), den Gültigkeitszeitraum und den Fingerprint. Den CN (Servername) und den O (Organization) habe ich bei der Erstellung des CSR/Zertifikats selbst festgelegt._
 
     2. Warum erscheint trotz technisch korrektem Zertifikat eine Sicherheitswarnung?
 
-        __
+        _Siehe C3 - die Kette endet bei einer unbekannten CA, die der Browser nicht kennt_
 
     3. Erklären Sie anhand dieses Setups, wie hybride Verschlüsselung bei HTTPS funktioniert (Schlüsselaustausch vs. Datenverschlüsselung).
 
-        __
+        **Hybride Verschlüsselung:** _Asymmetrische Verschlüsselung (z.B. RSA/ECDH) wird nur für den Schlüsselaustausch genutzt, um sicher ein symmetrisches Passwort (Session-Key) zu vereinbaren. Die eigentliche Datenübertragung danach nutzt symmetrische Verschlüsselung (AES), da diese deutlich schneller ist._
 
 ---
 ---
@@ -140,41 +140,46 @@
 ## E HTTP vs HTTPS - Traffic live mitlesen
 
 - Screenshot der vollständigen nmap-Ausgabe.
+    
     ![](../../img/M183_KN04_10.png)
+
 - Screenshot von Terminal 1 mit dem tcpdump-Output (Benutzername und Passwort müssen im Klartext sichtbar sein).
 
     ![](../../img/M183_KN04_11.png)
-- Screenshot von Terminal 2 mit dem curl-Befehl.
-    ![](../../img/M183_KN04_10.gif)
 
+- Screenshot von Terminal 2 mit dem curl-Befehl.
+
+    ![](../../img/M183_KN04_10.gif)
 
 - Screenshot von Terminal 1 mit dem tcpdump-Output auf Port 443 (verschlüsselte Bytes sichtbar, kein Klartext).
 
     ![](../../img/M183_KN04_14.png)
+
 - Schriftliche Antworten auf die sechs Fragen:
 
     1. Was zeigt nmap über Port 80 und Port 443? Welche Information erhält ein Angreifer bereits durch einen Port-Scan, bevor er auch nur eine einzige Anfrage an die App gestellt hat?
 
-        __
+        **nmap:** _Zeigt offene Ports. Ein Angreifer erkennt sofort, welche Dienste laufen und welche Versionen sie haben, was ihm hilft, gezielt nach bekannten Sicherheitslücken (Exploits) zu suchen._
 
     2. Was genau ist im tcpdump-Output sichtbar? Markieren Sie die Zeile, die das Passwort im Klartext enthält.
 
-        __
+        **tcpdump (HTTP):** _Sichtbar ist das `POST`-Protokoll mit Parametern wie `username=admin&password=sunshine`. Der gesamte Body wird im Klartext übertragen._
 
     3. Was müsste ein Angreifer in einem realen Netzwerk tun, um diesen Traffic mitzulesen? (Stichwort: ARP-Spoofing / Man-in-the-Middle)
 
-        __
+        **Reale Welt:** _Der Angreifer müsste sich in den Datenpfad bringen (Man-in-the-Middle), z.B. durch ARP-Spoofing im LAN oder durch Kontrolle über einen zwischengeschalteten Router._
 
     4. Was ist der Unterschied zwischen dem tcpdump-Output auf Port 80 und Port 443? Was sieht ein Angreifer beim HTTPS-Traffic?
 
-        __
+        **Vergleich (HTTP vs. HTTPS):** _Bei HTTP ist der Inhalt lesbar. Bei HTTPS sieht ein Angreifer nur verschlüsselten Binär-Code (Ciphertext) und kann den Inhalt ohne den passenden Session-Key nicht entschlüsseln._
+
     5. Was passiert beim TLS-Handshake, bevor die eigentlichen Daten (Benutzername/Passwort) übertragen werden? (Stichwort: Hybride Verschlüsselung aus Aufgabe D)
 
-        __
+        **TLS-Handshake:** _Hierbei einigen sich Client und Server auf die Verschlüsselungsparameter und tauschen (asymmetrisch) den symmetrischen Sitzungsschlüssel aus._
 
     6. Sie sehen bei Port 443 noch immer die IP-Adressen von Client und Server im tcpdump-Output. Warum ist das so, obwohl die Verbindung verschlüsselt ist?
 
-        __
+        **IP-Adressen:** _Diese sind im TCP/IP-Header enthalten. Sie müssen im Klartext übertragen werden, damit die Router im Internet die Datenpakete überhaupt an das richtige Ziel zustellen können (Routing)._
 
 ---
 ---
@@ -190,5 +195,17 @@
 
 - Schriftliche Antworten auf die drei Fragen aus Schritt 4:
     1. Welche Passwörter wurden geknackt, welche nicht? Was unterscheidet die knackbaren Passwörter von franks Passwort?
-    2. Das Script hat nur 20 Wörter geprüft. Die bekannte rockyou.txt-Wortliste hat 14 Millionen Einträge. Schätzen Sie anhand der gemessenen Hashes/Sekunde: Wie lange würde der gleiche Angriff mit rockyou.txt dauern?
+
+        _Geknackt wurden kurze, häufige Passwörter. Franks Passwort ist eine lange "Passphrase" und daher nicht in der kleinen Wortliste enthalten._
+
+    2. Das Script hat nur 20 Wörter geprüft. Die bekannte `rockyou.txt`-Wortliste hat 14 Millionen Einträge. Schätzen Sie anhand der gemessenen Hashes/Sekunde: Wie lange würde der gleiche Angriff mit `rockyou.txt` dauern?
+
+        **Zeit für 14 Mio. Einträge:**
+        $\frac{14.000.000}{1.453.414} \approx 9,6$ Sekunden.
+
     3. Franks Passwort ist lang und steht in keiner Wortliste – trotzdem ist der MD5-Hash grundsätzlich knackbar, es fehlt nur die richtige Liste. Welche zwei Massnahmen aus KN04 machen gestohlene Hashes unbrauchbar, selbst wenn der Angreifer sie hat?
+
+        **Massnahmen:**
+        - **Salt:** _Ein zufälliger Wert, der vor dem Hashing an das Passwort gehängt wird. Er macht Rainbow-Tables unbrauchbar._
+        - **Key Stretching / langsamer Algorithmus::** _Algorithmen wie Argon2ID sind so konzipiert, dass sie absichtlich viel Zeit und Speicher verbrauchen, um Brute-Force-Angriffe extrem zu verlangsamen._
+        
