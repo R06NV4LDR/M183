@@ -6,6 +6,7 @@
 	- [B2 – Cookies: Was sie sind und warum sie gefährlich sind](#b2--cookies-was-sie-sind-und-warum-sie-gefährlich-sind)
 	- [B3 – Session-Hijacking: Cookie-Exfiltration zum Angreifer-Server](#b3--session-hijacking-cookie-exfiltration-zum-angreifer-server)
 - [C Reflected XSS in Gruyere](#c-reflected-xss-in-gruyere)
+- [D Client-State Manipulation in Gruyere](#d-client-state-manipulation-in-gruyere)
 
 ---
 ---
