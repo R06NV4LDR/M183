@@ -23,73 +23,77 @@ _Screenshot der Inbound-Rules_
 
 ## B SQL Injection
 
-1. Zeichnen Sie auf, wie das SQL-Statement aus B1 vor und nach dem Einschleusen des Payloads aussieht. Erklären Sie, warum die Authentifizierung dadurch umgangen wird.
-
-   ![Login Bypass](../../img/M183_KN02_3.gif)
-
-   **Vor dem Einschleusen (Soll-Zustand)**
-
-   _Die Applikation erwartet eine Zahl im Feld `User_Id` (bzw. `Login_Count`), um einen spezifischen Benutzer zu filtern._
-
-   ```sql
-   SELECT * FROM user_data WHERE Login_Count = 1 AND userid = [EINGABE];
-   ```
-
-   _Wenn ein Benutzer die ID `105` eingibt, sucht die Datenbank exakt nach dieser ID. Gibt es sie nicht bleibt das Ergebnis leer und der Zugriff wird verweigert._
-
-   **Nach dem Einschleusen (Ist-Zustand)**
-
-   _Durch die Eingabe von `1 OR 1=1 -- ` (oder einer funktionierenden Variante wie `1 OR TRUE -- `) wird das Statement strukturell verändert:_
-
-   ```sql
-   SELECT * FROM user_data WHERE Login_Count = 1 AND userid = 1 OR 1=1 --;
-   ```
-
-   **Warum die Authentifizierung umgangen wird?**
-
-   _Der Datenbank-Parser wertet die `WHERE`-Bedingung logisch aus. Durch das `OR 1=1 -- ` wird eine Bedingung hinzugefügt, die **immer wahr (TRUE)** ist._
-   - Da das `--` den restlichen Teil der originalen Abfrage auskommentiert (abschneidet), lautet die logische Prüfung für die Datenbank im Kern nur noch: _„Gib die Zeile aus, wenn die ID 1 ist ODER wenn 1 gleich 1 ist“._
-
-   - Weil `1=1` für jede einzelne Zeile in der Tabelle zutrifft, ignoriert die Datenbank die Identitätsprüfung und gibt `alle Datensätze` an die Applikation zurück. Die Applikation sieht ein erfolgreiches Datenbank-Ergebnis und gewährt fälschlicherweise Zugriff.
+- Screenshot der gelösten B1-Aufgabe (grüne Bestätigung sichtbar) mit dem verwendeten Payload.
+        ![B1 - Login Bypass](../../img/M183_KN02_3.gif)
+- Screenshot der gelösten B2-Aufgabe mit dem Payload und den extrahierten Daten.
+        ![B2 - Query Chaining](../../img/M183_KN02_4_small.gif)
+- Schriftliche Antworten auf die vier Fragen:
+    1. Zeichnen Sie auf, wie das SQL-Statement aus B1 vor und nach dem Einschleusen des Payloads aussieht. Erklären Sie, warum die Authentifizierung dadurch umgangen wird.
 
 
-2. Wie funktionieren Prepared Statements (parameterisierte Abfragen) technisch? Warum kann SQL Injection damit nicht mehr funktionieren?
+        **Vor dem Einschleusen (Soll-Zustand)**
 
-   Bei einem **Prepared Statement** (parametrierte Abfrage) trennt die Webapplikation den ausführbahen SQL-Code strikt von den variablen Benutzerdaten. Das geschieht in zwei Schritten:
-   1. **Kompilierung (Prepare):** Die Applikation sendet das SQL-Grundgerüst mit Platzhaltern (`?`) an die Datenbank:
+        _Die Applikation erwartet eine Zahl im Feld `User_Id` (bzw. `Login_Count`), um einen spezifischen Benutzer zu filtern._
 
-      ```sql
-      SELECT * FROM user_data WHERE Login_Count = ? AND userid = ?;
-      ```
+        ```sql
+        SELECT * FROM user_data WHERE Login_Count = 1 AND userid = [EINGABE];
+        ```
 
-      Die Datenbank analysisert diese Struktur, baut den Ausführungsplan auf und legt fest, was Code und was Daten sind. Die Struktur steht ab diesem Moment felsenfest.
+        _Wenn ein Benutzer die ID `105` eingibt, sucht die Datenbank exakt nach dieser ID. Gibt es sie nicht bleibt das Ergebnis leer und der Zugriff wird verweigert._
 
-   2. **Einfügen der Parameter (Execute):** Erst danach werden die Benutzereingaben (z.B. `1 OR 1=1`) als reine Parameter an die Platzhalter übergeben.
+        **Nach dem Einschleusen (Ist-Zustand)**
 
-   **Warum SQL Injection damit unmöglich wird**
+        _Durch die Eingabe von `1 OR 1=1 -- ` (oder einer funktionierenden Variante wie `1 OR TRUE -- `) wird das Statement strukturell verändert:_
 
-   Da die Datenbank den SQL-Befehl bereits in Schritt 1 fertig kompiliert hat, kann die Benutzereingabe die logische Struktur des Befehls nicht mehr verändern.
+        ```sql
+        SELECT * FROM user_data WHERE Login_Count = 1 AND userid = 1 OR 1=1 --;
+        ```
 
-   Gibt ein Angreifer `1 OR 1=1` ein, sucht die Datenbank buchstäblich nach einem Benutzer, dessen ID exakt der String `1 OR "1 OR 1=1"` ist. Der Payload wird wie harmloser Freitext behandelt und verliert jegliche subversive Wirkung.
+        **Warum die Authentifizierung umgangen wird?**
 
----
+        _Der Datenbank-Parser wertet die `WHERE`-Bedingung logisch aus. Durch das `OR 1=1 -- ` wird eine Bedingung hinzugefügt, die **immer wahr (TRUE)** ist._
+        - Da das `--` den restlichen Teil der originalen Abfrage auskommentiert (abschneidet), lautet die logische Prüfung für die Datenbank im Kern nur noch: _„Gib die Zeile aus, wenn die ID 1 ist ODER wenn 1 gleich 1 ist“._
 
-3. Welche OWASP Top 10 Kategorie (2025) beschreibt SQL Injection? Nennen Sie Nummer und Bezeichnung.
+        - Weil `1=1` für jede einzelne Zeile in der Tabelle zutrifft, ignoriert die Datenbank die Identitätsprüfung und gibt `alle Datensätze` an die Applikation zurück. Die Applikation sieht ein erfolgreiches Datenbank-Ergebnis und gewährt fälschlicherweise Zugriff.
 
-   [**A05:2025-Injection**](https://owasp.org/Top10/2025/A05_2025-Injection/)
 
----
+    2. Wie funktionieren Prepared Statements (parameterisierte Abfragen) technisch? Warum kann SQL Injection damit nicht mehr funktionieren?
 
-4. Nennen Sie neben SQL Injection zwei weitere Injection-Varianten (z.B. OS Command Injection, LDAP Injection) und beschreiben Sie kurz, was dabei injiziert wird und wo die Gefahr liegt.
-   1. **OS Command Injection** (Betriebssystem-Befehlsinjektion)
-      - **Was wird injiziert?** Systembefehle des zugrundeliegenden Betriebssystems (z. B. `; rm -rf /` oder `& dir`), verpackt in Eingabefelder, die Parameter an Systemprozesse übergeben.
+        Bei einem **Prepared Statement** (parametrierte Abfrage) trennt die Webapplikation den ausführbahen SQL-Code strikt von den variablen Benutzerdaten. Das geschieht in zwei Schritten:
+        1. **Kompilierung (Prepare):** Die Applikation sendet das SQL-Grundgerüst mit Platzhaltern (`?`) an die Datenbank:
 
-      - **Wo liegt die Gefahr?** Wenn eine Webapplikation z. B. ein Ping-Tool bereitstellt und die IP-Eingabe ungefiltert an die System-Shell übergibt, kann ein Angreifer über Trennzeichen eigene Befehle anhängen. Die Gefahr reicht von der Offenlegung sensibler Systemdateien bis zur vollständigen Übernahme des Webservers (Remote Code Execution).
+        ```sql
+        SELECT * FROM user_data WHERE Login_Count = ? AND userid = ?;
+        ```
 
-   2. **LDAP Injection** (Lightweight Directory Access Protocol)
-      - **Was wird injiziert?** Steuerzeichen für Verzeichnisdienste (z. B. `*`, `(`, `)`, `&`, `|`), die in Abfragen an ein Active Directory oder ein LDAP-Verzeichnis eingebettet werden.
+        Die Datenbank analysisert diese Struktur, baut den Ausführungsplan auf und legt fest, was Code und was Daten sind. Die Struktur steht ab diesem Moment felsenfest.
 
-      - **Wo liegt die Gefahr?** Viele Unternehmen nutzen LDAP für das Single-Sign-On (Mitarbeiter-Login). Wird die Eingabe nicht bereinigt, kann ein Angreifer die LDAP-Suchfilter manipulieren (analog zu SQLi). Die Gefahr liegt im Umgehen der Login-Maske oder dem unbefugten Auslesen von Mitarbeiter- und Strukturdaten aus dem Firmennetzwerk.
+    2. **Einfügen der Parameter (Execute):** Erst danach werden die Benutzereingaben (z.B. `1 OR 1=1`) als reine Parameter an die Platzhalter übergeben.
+
+        **Warum SQL Injection damit unmöglich wird**
+
+        Da die Datenbank den SQL-Befehl bereits in Schritt 1 fertig kompiliert hat, kann die Benutzereingabe die logische Struktur des Befehls nicht mehr verändern.
+
+        Gibt ein Angreifer `1 OR 1=1` ein, sucht die Datenbank buchstäblich nach einem Benutzer, dessen ID exakt der String `1 OR "1 OR 1=1"` ist. Der Payload wird wie harmloser Freitext behandelt und verliert jegliche subversive Wirkung.
+
+    ---
+
+    3. Welche OWASP Top 10 Kategorie (2025) beschreibt SQL Injection? Nennen Sie Nummer und Bezeichnung.
+
+        [**A05:2025-Injection**](https://owasp.org/Top10/2025/A05_2025-Injection/)
+
+    ---
+
+    4. Nennen Sie neben SQL Injection zwei weitere Injection-Varianten (z.B. OS Command Injection, LDAP Injection) und beschreiben Sie kurz, was dabei injiziert wird und wo die Gefahr liegt.
+    1. **OS Command Injection** (Betriebssystem-Befehlsinjektion)
+        - **Was wird injiziert?** Systembefehle des zugrundeliegenden Betriebssystems (z. B. `; rm -rf /` oder `& dir`), verpackt in Eingabefelder, die Parameter an Systemprozesse übergeben.
+
+        - **Wo liegt die Gefahr?** Wenn eine Webapplikation z. B. ein Ping-Tool bereitstellt und die IP-Eingabe ungefiltert an die System-Shell übergibt, kann ein Angreifer über Trennzeichen eigene Befehle anhängen. Die Gefahr reicht von der Offenlegung sensibler Systemdateien bis zur vollständigen Übernahme des Webservers (Remote Code Execution).
+
+    2. **LDAP Injection** (Lightweight Directory Access Protocol)
+        - **Was wird injiziert?** Steuerzeichen für Verzeichnisdienste (z. B. `*`, `(`, `)`, `&`, `|`), die in Abfragen an ein Active Directory oder ein LDAP-Verzeichnis eingebettet werden.
+
+        - **Wo liegt die Gefahr?** Viele Unternehmen nutzen LDAP für das Single-Sign-On (Mitarbeiter-Login). Wird die Eingabe nicht bereinigt, kann ein Angreifer die LDAP-Suchfilter manipulieren (analog zu SQLi). Die Gefahr liegt im Umgehen der Login-Maske oder dem unbefugten Auslesen von Mitarbeiter- und Strukturdaten aus dem Firmennetzwerk.
 
 ---
 ---
@@ -110,7 +114,7 @@ Abgabe C:
 
 - Screenshot der C1b-Analyse: welche Codezeile(n) Sie als verwundbar markiert haben.
 
-  ![](../../img/M183_KN02_8.gif)
+  ![Eingabe start.mvc#test](../../img/M183_KN02_8.gif)
   ![C1b Analyse](../../img/M183_KN02_7_arrow.png)
 
 - Screenshot des ausgelösten Alerts bei C2 (Stored) nach dem Speichern des Kommentars.
